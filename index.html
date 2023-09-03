@@ -1,0 +1,47 @@
+<!-- user.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stray Cat Feeder App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Meow Meow Feeder History</h1>
+  </header>
+  <main>
+    <section id="cat-info">
+      <h2>The Meow You're Caring</h2>
+      <div id="cat-photo"></div>
+      <div id="location-description"></div>
+    </section>
+    <section id="user-form">
+      <h2>Record Feeding</h2>
+      <form id="feeding-form">
+          <label for="feeding-time">Feeding Time:</label>
+          <input type="datetime-local" id="feeding-time" required>
+          <label for="food-type">Food Type:</label>
+          <label for="food-type">Food Type:</label>
+          <select id="food-type" multiple>
+            <option value="dry-food">Dry Food</option>
+            <option value="wet-food">Wet Food (Canned)</option>
+            <option value="water">Water</option>
+            <option value="others">Others</option>
+          </select>  
+          <button type="button" id="record-feeding">Record Feeding</button>
+      </form>
+    </section>
+
+    <section id="feeding-history">
+      <h2>Feeding History</h2>
+      <ul id="feeding-list"></ul>
+    </section>
+  </main>
+  <footer>
+    <p><a href="management.html">Go to Management Interface</a></p>
+  </footer>
+  <script src="user-script.js"></script>
+</body>
+</html>
