@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         feedingList.innerHTML = ''; // Clear the existing list
         
-        feedingHistory.forEach(feeding => {
+        const feedingHistoryArray = Array.from(feedingHistory); // convert to array
+        feedingHistoryArray.forEach(feeding => {
           const feedingEntry = document.createElement('li');
           feedingEntry.innerHTML = `
             <strong>Feeding Time:</strong> ${feeding.time}<br>
