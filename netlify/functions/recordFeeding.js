@@ -14,6 +14,13 @@ exports.handler = async (event) => {
   }
 
   try {
+
+    // Initialize Firebase admin SDK
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      // Add other configuration options if needed
+    });
+
     const requestBody = JSON.parse(event.body);
     const { time, food } = requestBody;
     // Save feeding data to your database here
