@@ -3,11 +3,7 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json'); // Replace with the actual path
 
 
-// Initialize Firebase admin SDK
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  // Add other configuration options if needed
-});
+
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'GET') {
@@ -20,6 +16,12 @@ exports.handler = async (event) => {
   try {
     // Retrieve feeding history from your database here
     // Example: You can use a database like MongoDB, Firebase, etc.
+
+    // Initialize Firebase admin SDK
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      // Add other configuration options if needed
+    });
 
     const db = admin.firestore();
     const historyCollection = db.collection('feedingHistory');
