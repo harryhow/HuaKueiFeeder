@@ -15,6 +15,15 @@ const serviceAccount = {
     "universe_domain": "googleapis.com"
 };
 
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
+    // Add other configuration options if needed
+  });
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'GET') {
     return {
@@ -28,11 +37,11 @@ exports.handler = async (event) => {
     // Example: You can use a database like MongoDB, Firebase, etc.
 
     // Initialize Firebase admin SDK
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
-      // Add other configuration options if needed
-    });
+    // admin.initializeApp({
+    //   credential: admin.credential.cert(serviceAccount),
+    //   databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
+    //   // Add other configuration options if needed
+    // });
 
     const db = admin.firestore();
     const historyCollection = db.collection('feedingHistory');
@@ -55,6 +64,7 @@ exports.handler = async (event) => {
       body: JSON.stringify(feedingHistory),
     };
   } catch (error) {
+    console.error("Error details:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'An error occurred' }),

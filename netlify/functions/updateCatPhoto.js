@@ -16,6 +16,15 @@ const serviceAccount = {
 };
 
 
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
+    // Add other configuration options if needed
+  });
+}
+
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return {
@@ -27,11 +36,11 @@ exports.handler = async (event) => {
   try {
 
     // Initialize Firebase admin SDK
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
-      // Add other configuration options if needed
-    });
+    // admin.initializeApp({
+    //   credential: admin.credential.cert(serviceAccount),
+    //   databaseURL: 'https://meow-meow-feeder-e4bf9-default-rtdb.asia-southeast1.firebasedatabase.app',
+    //   // Add other configuration options if needed
+    // });
     const requestBody = JSON.parse(event.body);
     const catPhotoURL = requestBody.catPhotoURL;
     // Update cat's photo URL in the database here
